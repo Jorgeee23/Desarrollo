@@ -8,12 +8,13 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #1e1e2e;
+            color: white;
             margin: 0;
             padding: 20px;
         }
-        h1, h2 {
-            color: #333;
+        h1, h2, h3 {
+            color: #f8c12c;
         }
         ul {
             list-style: none;
@@ -24,27 +25,28 @@
         }
         a {
             text-decoration: none;
-            color: #007BFF;
+            color: #00aaff;
             font-size: 18px;
             font-weight: bold;
         }
         a:hover {
-            color: #0056b3;
+            color: #ff4500;
         }
         .gallery {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
             margin: 20px 0;
         }
-        .gallery img {
+        .gallery a img {
             width: 300px;
             border-radius: 10px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .gallery img:hover {
+        .gallery a img:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
         .video-link {
             display: inline-block;
@@ -53,6 +55,7 @@
             padding: 10px 20px;
             border-radius: 5px;
             margin-top: 15px;
+            transition: background 0.3s;
         }
         .video-link:hover {
             background-color: #218838;
@@ -71,15 +74,15 @@
         <li><a href="https://www.youtube.com/watch?v=SO2LIwBy1EE&t=185s">Humor</a></li>
     </ul>
     
-    <h2>Top peleas de anime</h2>
+    <h2>Top Peleas de Anime</h2>
     <div class="gallery">
         <a href="https://www.youtube.com/watch?v=uMmacMNluP0" target="_blank">
-            <img src="C:\Users\jorge\OneDrive\Imágenes\dragon.jpg" alt="Haz clic para ver el video" width="300">
+            <img src="https://source.unsplash.com/400x300/?dragon" alt="Haz clic para ver el video">
         </a>
-        
+    </div>
     
     <h2>Videos</h2>
-    <h3>La final más épica del mundo</h3>
+    <h3>La Final Más Épica del Mundo</h3>
     <a class="video-link" href="https://www.youtube.com/watch?v=xR63nMzK1Ic" target="_blank">Click para ver</a>
     
     <h2>Más Enlaces</h2>

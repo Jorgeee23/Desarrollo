@@ -4,12 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DE TODO UN POCO</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .gallery img {
+            width: 300px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .video-link {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .video-link:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
     <h1>DE TODO UN POCO</h1>
-    <p>Divierte y explora con enlaces interactivos.</p>
+    <p>Diviértete y explora con enlaces interactivos.</p>
     
-    <h2>Empecemos.</h2>
+    <h2>Empecemos</h2>
     <ul>
         <li><a href="https://www.netflix.com/co/login">Netflix</a></li>
         <li><a href="https://open.spotify.com/intl-es#login">Spotify</a></li>
@@ -18,16 +72,15 @@
     </ul>
     
     <h2>Galería de Imágenes</h2>
-    <img src="https://www.youtube.com/watch?v=xR63nMzK1Ic" alt="La final mas épica del mundo" width="400">
-    <img src="https://source.unsplash.com/400x300/?forest" alt="Imagen de un bosque" width="400">
-    <img src="https://source.unsplash.com/400x300/?eagle" alt="Imagen de un águila" width="400">
-    <img src="https://source.unsplash.com/400x300/?ocean" alt="Imagen del océano" width="400">
+    <div class="gallery">
+        <img src="https://source.unsplash.com/400x300/?forest" alt="Imagen de un bosque">
+        <img src="https://source.unsplash.com/400x300/?eagle" alt="Imagen de un águila">
+        <img src="https://source.unsplash.com/400x300/?ocean" alt="Imagen del océano">
+    </div>
     
     <h2>Videos</h2>
-    <h2>La final más épica del mundo</h2>
-<a href="https://www.youtube.com/watch?v=xR63nMzK1Ic" target="_blank">Click para ver</a>
-
-
+    <h3>La final más épica del mundo</h3>
+    <a class="video-link" href="https://www.youtube.com/watch?v=xR63nMzK1Ic" target="_blank">Click para ver</a>
     
     <h2>Más Enlaces</h2>
     <ul>

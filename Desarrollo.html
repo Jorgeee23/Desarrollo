@@ -3,97 +3,541 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DE TODO UN POCO</title>
+    <title>Animeverse</title>
     <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #1e1e2e;
-            color: white;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header"
+                "nav"
+                "main"
+                "footer";
+            grid-template-rows: 120px 50px auto 60px;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        header {
+            grid-area: header;
+            background: #0062ff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        nav {
+            grid-area: nav;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background-color: #ff4500;
+        }
+        .main-container {
+            display: flex;
+            grid-area: main;
+            gap: 20px;
             padding: 20px;
         }
-        h1, h2, h3 {
-            color: #3a2cf8;
+        section {
+            flex: 3;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
-        ul {
-            list-style: none;
-            padding: 0;
+        footer {
+            grid-area: footer;
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
         }
-        li {
+        #registro {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        #registro input {
+            width: 80%;
+            padding: 8px;
             margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-        a {
+        #registro button {
+            padding: 10px;
+            background: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #registro button:hover {
+            background: #e00007;
+        }
+    </style>
+
+    <style>
+        nav {
+    display: flex;
+    justify-content: space-around; /* O usa space-evenly */
+    align-items: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header"
+                "nav"
+                "main"
+                "footer";
+            grid-template-rows: 120px 50px auto 60px;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        header {
+            grid-area: header;
+            background: #003cff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        header h1 {
+            margin-bottom: 5px;
+        }
+        .description {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        nav {
+            grid-area: nav;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            gap: 15px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        nav a {
+            color: white;
             text-decoration: none;
-            color: #00aaff;
-            font-size: 18px;
             font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
         }
-        a:hover {
-            color: #ff4500;
+        nav a:hover {
+            background-color: #816b74;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ff0019;
+        }
+        .main-container {
+            display: flex;
+            grid-area: main;
+            gap: 20px;
+            padding: 20px;
+        }
+        section {
+            flex: 3;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        aside {
+            flex: 1;
+            background: #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            grid-area: footer;
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
         }
         .gallery {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
             gap: 15px;
-            margin: 20px 0;
-        }
-        .gallery a img {
-            width: 300px;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .gallery a img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-        .video-link {
-            display: inline-block;
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
             margin-top: 15px;
-            transition: background 0.3s;
         }
-        .video-link:hover {
-            background-color: #218838;
+        .gallery img {
+            width: 200px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        /* Ocultar sección de inicio, servicio y novedades por defecto */
+        #inicio, #servicio, #novedades {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        #inicio img {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #ff0000;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #e00000;
+        }
+        .services-list {
+            margin-top: 20px;
+        }
+        .services-list ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .services-list li {
+            margin: 10px 0;
+        }
+        /* Estilos para la encuesta */
+        .encuesta {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .encuesta h3 {
+            margin-bottom: 10px;
+        }
+        .top-container {
+            display: flex;
+            gap: 20px;
         }
     </style>
+    
+    
 </head>
 <body>
-    <h1>DE TODO UN POCO</h1>
-    <p>Diviértete y explora con enlaces interactivos.</p>
-    
-    <h2>Empecemos</h2>
-    <ul>
-        <li><a href="https://www.netflix.com/co/login">Netflix</a></li>
-        <li><a href="https://open.spotify.com/intl-es#login">Spotify</a></li>
-        <li><a href="https://www.facebook.com/">Facebook</a></li>
-        <li><a href="https://www.youtube.com/watch?v=SO2LIwBy1EE&t=185s">Humor</a></li>
-    </ul>
-    
-    <h2>Top Peleas de Anime</h2>
-    <div class="gallery">
-        <a href="https://www.youtube.com/watch?v=uMmacMNluP0" target="_blank">
-            <img src="C:\Users\jorge\OneDrive\Imágenes\dragon.jpg" alt="Haz clic para ver el video de Dragon Ball">
-        </a>
-        <a href="https://www.youtube.com/watch?v=ddFX_Qnnq7g" target="_blank">
-            <img src="C:\Users\jorge\OneDrive\Imágenes\rengo.jpg" alt="Haz clic para ver el video de Demon Slayer">
-        </a>
+    <nav>
+            
+        
+    </nav>
+    <div id="registro">
+        <h2>Registro</h2>
+        <form onsubmit="mostrarMensaje(event)">
+            <input type="text" placeholder="Nombre" required><br>
+            <input type="email" placeholder="Correo Electrónico" required><br>
+            <input type="password" placeholder="Contraseña" required><br>
+            <button type="submit">Registrarse</button>
+        </form>
+        <p id="mensaje" style="display: none; color: green; font-weight: bold;">Usuario registrado con éxito ✅</p>
     </div>
     
-    <h2>Videos</h2>
-    <h3>La Final Más Épica del Mundo</h3>
-    <a class="video-link" href="https://www.youtube.com/watch?v=xR63nMzK1Ic" target="_blank">Click para ver</a>
+    <script>
+        function mostrarMensaje(event) {
+            event.preventDefault(); // Evita que la página se recargue
+            document.getElementById("mensaje").style.display = "block"; // Muestra el mensaje
+            
+            // Redirigir después de 2 segundos
+            setTimeout(function() {
+                window.location.href = "file:///C:/Users/jorge/OneDrive/Escritorio/Desarrollo/Desarrollo.html?# "; 
+            }, 2000);
+        }
+    </script>
     
-    <h2>Más Enlaces</h2>
-    <ul>
-        <li><a href="https://www.worldwildlife.org">WWF</a></li>
-        <li><a href="https://www.nationalgeographic.com">National Geographic</a></li>
-        <li><a href="https://www.iucnredlist.org">Lista Roja de Especies</a></li>
-        <li><a href="https://www.nature.org">The Nature Conservancy</a></li>
-    </ul>
+    
+            
+            
+
+        </form>
+   
+    </div>
+
+
+<script>
+    function mostrarSeccion(seccion) {
+        document.getElementById("registro").style.display = "none";
+        if (document.getElementById(seccion)) {
+            document.getElementById(seccion).style.display = "block";
+        }
+    }
+</script>
+<script>
+    function mostrarRegistro() {
+        // Ocultar todos los elementos dentro de la 'container'
+        let containerElements = document.querySelectorAll('.container > *');
+        containerElements.forEach(el => el.style.display = "none");
+
+        // Mostrar solo el formulario de registro
+        document.getElementById("registro").style.display = "block";
+    }
+</script>
+
+
+
+
+    <div class="container">
+        <header>
+            <h1>Animeverse</h1>
+        </header>
+
+        <nav>
+            
+            <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
+            <a href="#" onclick="mostrarSeccion('servicio')">Servicio</a>
+            <a href="#" onclick="mostrarSeccion('novedades')">Novedades</a>
+            <a href="#" onclick="mostrarRegistro()">Registrarse</a>
+            <a href="#" onclick="mostrarEncuesta()"> Encuesta</a> 
+           
+        </nav>
+        
+
+        <div id="inicio">
+            <h1>✨ ¡Bienvenido a AnimeVerse! ✨</h1>
+            <p>Tu destino definitivo para estar al día con lo mejor del anime.</p>
+            <p>Noticias, peleas épicas, curiosidades y mucho más.</p>
+            <img src="https://sm.ign.com/t/ign_hu/screenshot/default/faceoff-anime-blogroll-1622054545336_4vfr.1280.jpg" alt="AnimeWorld">
+            <a class="btn" onclick="mostrarSeccion('top-peleas')">Volver a Animeverse</a>
+        </div>
+
+        <!-- Sección de Top Peleas de Anime -->
+        <div id="top-peleas" class="top-container">
+            <section>
+                <h2>🔥 Top Peleas de Anime</h2>
+                <p>A continuación, algunas de las peleas más épicas que han marcado la historia del anime:</p>
+                <div class="gallery">
+                    <a href="https://www.youtube.com/watch?v=uMmacMNluP0" target="_blank">
+                        <img src="https://somoskudasai.com/wp-content/uploads/2018/03/dragon-ball-super-1073916.jpeg" alt="Dragon Ball">
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=ddFX_Qnnq7g" target="_blank">
+                        <img src="https://i.ytimg.com/vi/Qr-KTXKSEn8/sddefault.jpg" alt="Demon Slayer">
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=qjqgSVNfmn4" target="_blank">
+                        <img src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2024/06/naruto-and-sasuke.jpg" alt="Naruto">
+                    </a>
+                </div>
+            </section>
+
+            <!-- Páginas Recomendadas (Lado Derecho) -->
+            <aside>
+                <h3>Páginas recomendadas</h3>
+                <ul>
+                    <li><a href="https://www.crunchyroll.com/es-es" target="_blank" rel="noopener noreferrer">Crunchyroll</a></li>
+                    <li><a href="https://www3.animeflv.net" target="_blank" rel="noopener noreferrer">Animeflv</a></li>
+                    <li><a href="https://jkanime.net" target="_blank" rel="noopener noreferrer">jkanime</a></li>
+                </ul>
+                
+            </aside>
+        </div>
+
+        <!-- Sección de Novedades -->
+        <div id="novedades">
+            <h2>🚀 Últimas Novedades</h2>
+            <p>¡Mantente al día con las últimas noticias del mundo del anime!</p>
+            <ul>
+                <li><a href="https://www.crunchyroll.com/es/news/announcements/2025/3/18/kaiju-no-8-mission-recon-estreno-latinoamerica" target="_blank">Estreno de Kaiju No. 8: Misión de Reconocimiento en Latinoamérica</a></li>
+                <li><a href="https://areajugones.sport.es/anime/one-piece-1143-el-nuevo-capitulo-del-manga-ya-esta-filtrado-al-completo-y-con-imagenes/"target="_blank">One Piece 1143: el nuevo capítulo del manga ya está filtrado al completo y con imágenes</a></li>
+                <li><a href="https://vandal.elespanol.com/random/solo-leveling-es-la-punta-del-iceberg-corea-del-sur-quiere-superar-a-japon-en-el-anime-y-prepara-20-nuevas-series-para-2025/32525.html" target="_blank">'Solo Leveling' es la punta del iceberg: Corea del Sur quiere superar a Japón en el anime y prepara 20 nuevas series para 2025</a></li>
+                <li><a href="https://www.crunchyroll.com/es/news/latest/2025/3/20/maplestory-demon-slayer-evento-colaboracion" target="_blank">Anuncian una colaboración entre Demon Slayer: Kimetsu no Yaiba y MapleStory</a></li>
+                <a class="btn" onclick="mostrarSeccion('top-peleas')">Volver a Animeverse</a>  
+             </ul>
+        </div>
+
+        <!-- Sección de Servicio -->
+        <div id="servicio">
+            <section>
+                <h2>🎥 Nuestros Servicios</h2>
+                <p>Explora todo lo que tenemos para los amantes del anime.</p>
+                <div class="services-list">
+                    <ul>
+                        <li>📺 <strong>Reseñas de Anime</strong>: Análisis detallados de los mejores animes de la historia.</li>
+                        <li>⚔️ <strong>Peleas Épicas</strong>: Videos y debates sobre los enfrentamientos más impactantes del anime.</li>
+                        <li>📝 <strong>Encuestas y Opiniones</strong>: Participa en encuestas sobre tus personajes y animes favoritos.</li>
+                        <li>📷 <strong>Galería de Imágenes</strong>: Colección de imágenes de animes icónicos.</li>
+                        <li>🎟️ <strong>Recomendaciones</strong>: Descubre nuevos animes según tus gustos.</li>
+                        <a class="btn" onclick="mostrarSeccion('top-peleas')">Volver a Animeverse</a>   </ul>
+                </div>
+                
+          
+        </div>
+        
+
+        <!-- Encuesta -->
+<div id="encuesta" class="encuesta" style="display: none;">
+    <h3>Encuesta de Anime</h3>
+    <form>
+        <label for="anime">¿Cuál es tu anime favorito?</label>
+        <select id="anime" name="anime"required>
+            <option value="" disabled selected></option>
+            <option value="naruto">Naruto</option>
+            <option value="one_piece">One Piece</option>
+            <option value="dragon_ball">Dragon Ball</option>
+            <option value="attack_on_titan">Attack on Titan</option>
+            <option value="death_note">Death Note</option>
+            <option value="kimetsu_no_yaiba">Kimetsu no Yaiba</option>
+            <option value="otro">Otro</option>
+            
+                  
+        </select>
+    
+
+        <br><br>
+
+        <label for="revivir">Si pudieras revivir a un personaje de anime que murió, ¿quién sería?</label>
+        <input type="text" id="revivir" name="revivir" required>
+
+        <br><br>
+
+        <label for="horasAnime">¿Cuántas horas a la semana ves anime?</label>
+        <select id="horasAnime" name="horasAnime" required>
+            <option value="" disabled selected></option>
+            <option value="menos5">Menos de 5</option>
+            <option value="5-10">5-10</option>
+            <option value="10-20">10-20</option>
+            <option value="mas20">Más de 20</option>
+        </select>
+        
+        <br><br>
+        
+
+        <label for="plataformaAnime">¿Qué plataforma usas para ver anime?</label>
+        <select id="plataformaAnime" name="plataformaAnime" required>
+            <option value="" disabled selected></option>
+            <option value="crunchyroll">Crunchyroll</option>
+            <option value="netflix">Netflix</option>
+            <option value="animeflv">AnimeFLV</option>
+            <option value="funimation">Funimation</option>
+            <option value="otras">Otras</option>
+        </select>
+
+        <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+    
+    
+    
+</div>
+
+        </div>
+
+        <footer>
+            <p>© By Jorge Gonzalez.</p>
+        </footer>
+    </div>
+
+    <script>
+       function mostrarSeccion(seccion) {
+    // Ocultar todas las secciones
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("servicio").style.display = "none";
+    document.getElementById("novedades").style.display = "none";
+    document.getElementById("top-peleas").style.display = "none"; // Ocultar top peleas
+    document.getElementById("encuesta").style.display = "none"; // Asegurarse de que la encuesta esté oculta
+
+    // Mostrar la sección seleccionada, excepto si es encuesta
+    if (seccion !== "encuesta") {
+        document.getElementById(seccion).style.display = "block";
+    }
+}
+
+function mostrarEncuesta() {
+    console.log("Se ha hecho clic en 'Participa en la Encuesta'"); // Verificación de que se ejecuta correctamente
+    // Mostrar la encuesta
+    document.getElementById("encuesta").style.display = "block";
+
+    // Ocultar otras secciones
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("servicio").style.display = "none";
+    document.getElementById("novedades").style.display = "none";
+    document.getElementById("top-peleas").style.display = "none"; // Ocultar top peleas
+    document.getElementById("registro").style.display = "none"; // Ocultar top peleas
+}
+
+        
+    </script>
+
 </body>
+
+</html>
+
 </html>
